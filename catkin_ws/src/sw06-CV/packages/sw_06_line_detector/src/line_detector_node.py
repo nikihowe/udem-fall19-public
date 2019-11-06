@@ -136,6 +136,9 @@ class LineDetectorNode(object):
 
     def processImage_(self, image_msg):
 
+        print("starting to process image")
+        start = time.time()
+
         self.stats.processed()
 
         if self.intermittent_log_now():
@@ -234,6 +237,11 @@ class LineDetectorNode(object):
 
 
         self.intermittent_log(tk.getall())
+
+        print("finished processing image")
+        end = time.time()
+
+        print("total time taken:", end - start)
 
 
     def onShutdown(self):
